@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RESTAPI ACCESS TEST</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+    .container {
+      text-align: center;
+      background: #fff;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+    .date {
+      margin-top: 20px;
+      font-size: 1.2em;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>RESTAPI ACCESS TEST</h1>
+  <button onclick="callApi()">Get Date</button>
+  <div id="output" class="date"></div>
+</div>
+
+<script>
+async function callApi() {
+  try {
+    const response = await fetch('http://127.0.0.1:8000');
+    const output = await response.json();
+    console.log('Output:', output);
+    document.getElementById('output').innerText = `Date: ${output.date}`;
+  } catch (err) {
+    console.error(err);
+  }
+}
+</script>
+
+</body>
+</html>
